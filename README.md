@@ -75,7 +75,8 @@ Les bases de données relationnelles, objet et non relationnelles ont chacune le
 | Bases de données non relationnelles  | - Grande évolutivité <br> - Grande disponibilité <br> - Adaptées aux données non structurées  | - Peu adaptées aux transactions complexes <br> - Peu adaptées aux requêtes ad hoc |
 
 [^8]: Une requête ad hoc est une requête SQL qui est écrite pour une utilisation unique.  
-Elle est généralement utilisée pour extraire des données spécifiques d’une base de données qui ne sont pas incluses dans les rapports standard. Les requêtes ad hoc sont souvent utilisées pour répondre à des questions spécifiques ou pour résoudre des problèmes spécifiques. Par exemple, si vous voulez savoir combien de clients ont acheté un produit spécifique au cours des 30 derniers jours, vous pouvez écrire une requête ad hoc pour extraire ces informations de la base de données.
+Elle est généralement utilisée pour extraire des données spécifiques d’une base de données qui ne sont pas incluses dans les rapports standard. Les requêtes ad hoc sont souvent utilisées pour répondre à des questions spécifiques ou pour résoudre des problèmes spécifiques.  
+Par exemple, si vous voulez savoir combien de clients ont acheté un produit spécifique au cours des 30 derniers jours, vous pouvez écrire une requête ad hoc pour extraire ces informations de la base de données.
 
 ### Performances
 
@@ -114,3 +115,87 @@ Liste exhaustive des types de données les plus couramment utilisés :
 
 > [!TIP]
 > Si vous souhaitez plus de type de données n'hésitez pas à consulter le site [developpement-informatique.com](https://developpement-informatique.com/article/282/types-de-donnees-sql).
+
+## Prérequis environnement de travail MySQL
+
+### Modifier les variables d'environnement système de Windows 11
+
+1. Dans rechercher saisissez `Modifier les variables d'environnement`
+2. Dans la fenêtre Propiétés système, cliquez sur le bouton `Variables d'environnement...`
+3. Dans la fenêtre Variables d'environnement, double cliquez sur `Path`
+4. Dans la fenêtre Modifier la variable d'environnement, cliquez sur nouveau et collez le chemin suivant `C:\wamp64\bin\mysql\mysql8.2.0\bin` puis cliquez sur `OK`
+5. Redémarrez votre micro-ordinateur.
+
+![Modifier les variables d'environnement](/assets/img/variables-environnement.webp)
+
+### Vérification de l'état des services
+Si vous êtes sous Windows 11 et que vous utilisez WampServer :
+
+Pour vérifier que le service wampmysql64 est bien lancé : 
+1. cliquez droit sur l'icône de wampserver dans la barre d'état système.
+2. cliquez sur Outils > Vérifier l'état des services.
+3. vous devriez avoir la fenêtre Administrateur : State of services qui affiche `The service 'wampmysqld64' is started`.
+
+![WampServer MySQL Service Status](/assets/img/wampserver-mysqlservice.webp)
+
+### Activation de l'UTF-8 de manière globale sur le serveur MySQL
+
+> [!WARNING]
+> **Correctif** pour la limitation du nombre de caractères au niveau de VARCHAR() sous Windows 11. Nécessite la version 8.2.0 de MySQL.  
+> Modifier votre fichier à l'aide de l'application Bloc-notes `my.ini` en ajoutant à la suite de `port=3306` (en fin de fichier), les lignes `character_setserver=utf8` et `collation_server=utf8_general_ci`.  
+> Par défaut le chemin d'accès est : `C:\wamp64\bin\mysql\mysql8.2.0\my.ini`.
+> ```
+> [mysqld]
+> port=3306
+> character_set_server=utf8
+> collation_server=utf8_general_ci
+> ```
+
+> [!NOTE]
+> Les lignes suivantes dans WampServer définissent le jeu de caractères et la collation pour le serveur MySQL. Le jeu de caractères définit l’ensemble de caractères utilisé pour stocker les données, tandis que la collation définit les règles de tri et de comparaison des données. Dans ce cas, le jeu de caractères est défini sur `utf8`, qui est un jeu de caractères Unicode qui prend en charge la plupart des langues du monde, et la collation est définie sur `utf8_general_ci `, qui est une collation qui prend en charge la comparaison insensible à la casse pour les caractères Unicode.
+
+## Connexion au serveur MySQL
+
+1. Ouvrez un terminal (cmd)
+```
+Microsoft Windows [version 10.0.22631.3007]
+(c) Microsoft Corporation. Tous droits réservés.
+
+C:\>
+```
+
+2. Connectez-vous au serveur MySQL via la commande suivante :
+
+```
+C:\>mysql -u root -p
+Enter password:
+
+```
+Les paramètres suivants correspondent à :
+- `-u` : User (Utilisateur)
+- `-p` : Password (Mot de passe)
+
+Votre terminal devrait afficher :
+```
+C:\>mysql -u root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.2.0 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql>
+```
+
+> [!NOTE]
+> Par défaut il n'y a pas de mot de passe sur WampServer
+
+
+
