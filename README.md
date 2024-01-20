@@ -106,4 +106,11 @@ Liste exhaustive des types de données les plus couramment utilisés :
 9. `DATE` : Utilisé pour stocker des dates.  
 *Exemple : DATE peut stocker une date telle que '2024-01-20'.*
 
-Si vous souhaitez plus de type de données n'hésitez pas à consulter le site [developpement-informatique.com](https://developpement-informatique.com/article/282/types-de-donnees-sql).
+> [!IMPORTANT]
+> La longueur d’une chaîne de caractères dans MySQL est définie en octets. Pour un type de données `VARCHAR`, vous pouvez définir la longueur de la chaîne en utilisant le paramètre `n`.
+> La longueur de la chaîne de caractères **“Découverte de SQL”** est de 18 caractères.  
+> Si vous utilisez l’encodage UTF-8, chaque caractère peut compter pour plus d’un octet.  
+> Par exemple, le caractère `é` peut compter pour deux octets.
+
+> [!TIP]
+> Si vous souhaitez plus de type de données n'hésitez pas à consulter le site [developpement-informatique.com](https://developpement-informatique.com/article/282/types-de-donnees-sql).
