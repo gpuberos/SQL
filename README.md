@@ -198,7 +198,7 @@ mysql>
 ```
 
 > [!NOTE]
-> Par défaut il n'y a pas de mot de passe sur WampServer
+> Par défaut, il n'y a pas de mot de passe pour se connecter au serveur MySQL de WampServer.
 
 
 
