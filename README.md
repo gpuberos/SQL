@@ -129,12 +129,12 @@ Liste exhaustive des types de données les plus couramment utilisés :
 ![Modifier les variables d'environnement](/assets/img/variables-environnement.webp)
 
 ### Vérification de l'état des services
-Si vous êtes sous Windows 11 et que vous utilisez WampServer :
+Si vous êtes sous Windows 11 et que vous utilisez **[WampServer](https://wampserver.aviatechno.net/)** :
 
 Pour vérifier que le service wampmysql64 est bien lancé : 
-1. cliquez droit sur l'icône de wampserver dans la barre d'état système.
+1. clic droit sur l'icône de wampserver dans la barre d'état système.
 2. cliquez sur Outils > Vérifier l'état des services.
-3. vous devriez avoir la fenêtre Administrateur : State of services qui affiche `The service 'wampmysqld64' is started`.
+3. La fenêtre Administrateur : State of services doit afficher `The service 'wampmysqld64' is started`.
 
 ![WampServer MySQL Service Status](/assets/img/wampserver-mysqlservice.webp)
 
