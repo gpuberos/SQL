@@ -98,9 +98,9 @@ Liste exhaustive des types de données les plus couramment utilisés :
 *Exemple : CHAR(10) peut stocker une chaîne de caractères de 10 caractères, et si la chaîne est plus courte, elle est remplie d'espaces.*
 5. `INT` : Utilisé pour stocker des nombres entiers.  
 *Exemple : INT peut stocker des nombres entiers tels que 1, 100, -500.*
-6. `NUMERIC(p, s)` : Utilisé pour stocker des nombres décimaux avec une précision spécifique.  
-*Exemple : NUMERIC(5, 2) peut stocker un nombre comme 123.45 avec une précision de deux décimales.*
-7. `FLOAT` ou `DOUBLE` : Utilisé pour stocker des nombres décimaux (à virgule flottante).  
+6. `DECIMAL(p, s)` : Utilisé pour stocker des nombres décimaux avec une précision spécifique.  
+*Exemple : DECIMAL(5, 2) peut stocker un nombre comme 123.45 avec une précision de deux décimales.*
+7. `FLOAT` : Utilisé pour stocker des nombres décimaux (à virgule flottante).  
 *Exemple : FLOAT peut stocker des nombres décimaux comme 3.14, -0.005.*
 8. `BOOLEAN` : Utilisé pour stocker des valeurs de vérité (Vrai/Faux).  
 *Exemple : BOOLEAN peut être utilisé pour indiquer si un utilisateur est connecté (Vrai) ou déconnecté (Faux).*
