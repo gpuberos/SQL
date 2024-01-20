@@ -142,7 +142,7 @@ Pour vérifier que le service wampmysql64 est bien lancé :
 
 > [!WARNING]
 > **Correctif** pour la limitation du nombre de caractères au niveau de VARCHAR() sous Windows 11. Nécessite la version MySQL 8.2.0.  
-> Modifier votre fichier à l'aide de l'application Bloc-notes `my.ini` en ajoutant à la suite de `port=3306` (en fin de fichier), les lignes `character_setserver=utf8` et `collation_server=utf8_general_ci`.  
+> Modifier votre fichier à l'aide de l'application Bloc-notes `my.ini` en ajoutant à la suite de `port=3306` (en fin de fichier), les lignes `character_set_server=utf8` et `collation_server=utf8_general_ci`.  
 > Par défaut le chemin d'accès est : `C:\wamp64\bin\mysql\mysql8.2.0\my.ini`.
 > ```
 > [mysqld]
