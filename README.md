@@ -118,7 +118,7 @@ Liste exhaustive des types de données les plus couramment utilisés :
 
 ## Prérequis environnement de travail MySQL
 
-### Modifier les variables d'environnement système de Windows 11
+### Modification des variables d'environnement système de Windows 11
 
 1. Dans rechercher saisissez `Modifier les variables d'environnement`
 2. Dans la fenêtre Propiétés système, cliquez sur le bouton `Variables d'environnement...`
@@ -132,8 +132,8 @@ Liste exhaustive des types de données les plus couramment utilisés :
 Si vous êtes sous Windows 11 et que vous utilisez **[WampServer](https://wampserver.aviatechno.net/)** :
 
 Pour vérifier que le service wampmysql64 est bien lancé : 
-1. clic droit sur l'icône de wampserver dans la barre d'état système.
-2. cliquez sur Outils > Vérifier l'état des services.
+1. Clic droit sur l'icône de wampserver dans la barre d'état système.
+2. Cliquez sur Outils > Vérifier l'état des services.
 3. La fenêtre Administrateur : State of services doit afficher `The service 'wampmysqld64' is started`.
 
 ![WampServer MySQL Service Status](/assets/img/wampserver-mysqlservice.webp)
@@ -141,7 +141,7 @@ Pour vérifier que le service wampmysql64 est bien lancé :
 ### Activation de l'UTF-8 de manière globale sur le serveur MySQL
 
 > [!WARNING]
-> **Correctif** pour la limitation du nombre de caractères au niveau de VARCHAR() sous Windows 11. Nécessite la version 8.2.0 de MySQL.  
+> **Correctif** pour la limitation du nombre de caractères au niveau de VARCHAR() sous Windows 11. Nécessite la version MySQL 8.2.0.  
 > Modifier votre fichier à l'aide de l'application Bloc-notes `my.ini` en ajoutant à la suite de `port=3306` (en fin de fichier), les lignes `character_setserver=utf8` et `collation_server=utf8_general_ci`.  
 > Par défaut le chemin d'accès est : `C:\wamp64\bin\mysql\mysql8.2.0\my.ini`.
 > ```
