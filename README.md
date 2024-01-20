@@ -168,14 +168,17 @@ C:\>
 
 ```
 C:\>mysql -u root -p
-Enter password:
-
 ```
 Les paramètres suivants correspondent à :
 - `-u` : User (Utilisateur)
 - `-p` : Password (Mot de passe)
 
-Votre terminal devrait afficher :
+Saisissez votre mot de passe pour pouvoir vous connecter :
+```
+Enter password:
+```
+
+Une fois connecté votre terminal devrait afficher :
 ```
 C:\>mysql -u root -p
 Enter password:
