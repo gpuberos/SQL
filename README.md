@@ -92,20 +92,20 @@ Les performances d’écriture et de lecture diffèrent en fonction de leur stru
 
 Liste exhaustive des types de données les plus couramment utilisés :  
 
-1. `VARCHAR(n)` : Utilisé pour stocker des chaînes de caractères de longueur variable.  
+1. `VARCHAR(size)` : Utilisé pour stocker des chaînes de caractères de longueur variable.  
 *Exemple : VARCHAR(50) peut stocker une chaîne de caractères jusqu'à 50 caractères, comme un nom.*
-3. `CHAR(n)` : Similaire à VARCHAR, mais avec une longueur fixe.  
+3. `CHAR(size)` : Similaire à VARCHAR, mais avec une longueur fixe.  
 *Exemple : CHAR(10) peut stocker une chaîne de caractères de 10 caractères, et si la chaîne est plus courte, elle est remplie d'espaces.*
 5. `INT` : Utilisé pour stocker des nombres entiers.  
 *Exemple : INT peut stocker des nombres entiers tels que 1, 100, -500.*
-6. `DECIMAL(p, s)` : Utilisé pour stocker des nombres décimaux avec une précision spécifique.  
+6. `DECIMAL(size, d)` : Utilisé pour stocker des nombres décimaux avec une précision spécifique.  
 *Exemple : DECIMAL(5, 2) peut stocker un nombre comme 123.45 avec une précision de deux décimales.*
 7. `FLOAT` : Utilisé pour stocker des nombres décimaux (à virgule flottante).  
 *Exemple : FLOAT peut stocker des nombres décimaux comme 3.14, -0.005.*
-8. `BOOLEAN` : Utilisé pour stocker des valeurs de vérité (Vrai/Faux).  
-*Exemple : BOOLEAN peut être utilisé pour indiquer si un utilisateur est connecté (Vrai) ou déconnecté (Faux).*
+8. `BOOLEAN` : Utilisé pour stocker des valeurs de vérité (TRUE/FALSE ou 1/0).  
+*Exemple : BOOLEAN peut être utilisé pour indiquer si un utilisateur est connecté (TRUE) ou déconnecté (FALSE).*
 9. `DATE` : Utilisé pour stocker des dates.  
-*Exemple : DATE peut stocker une date telle que '2024-01-20'.*
+*Exemple : DATE peut stocker une date telle que '2024-01-20', 'AAAA-MM-JJ'.*
 
 > [!IMPORTANT]
 > La longueur d’une chaîne de caractères dans MySQL est définie en octets. Pour un type de données `VARCHAR`, vous pouvez définir la longueur de la chaîne en utilisant le paramètre `n`.
