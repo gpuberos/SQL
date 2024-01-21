@@ -229,8 +229,6 @@ Pour afficher toutes les bases de données, vous pouvez utiliser l’instruction
 ```
 SHOW DATABASES;
 ```
-
-Et vous verrez :
 ```
 +--------------------+
 | Database           |
@@ -250,7 +248,6 @@ Utiliser la commande `USE` pour sélectionner la base de données `firstdatabase
 ```
 USE firstdatabase;
 ```
-Et vous verrez :
 ```
 Database changed
 ```
@@ -285,7 +282,6 @@ Description de la propriété et des contraintes appliquées aux champs :
 ```
 DESC users;
 ```
-Et vous verrez :
 ```
 +-------+--------------+------+-----+---------+----------------+
 | Field | Type         | Null | Key | Default | Extra          |
@@ -304,8 +300,6 @@ Cette commande affichera la structure de la table `users`, y compris les noms de
 INSERT INTO users (name, email)
 VALUES ('John Doe', 'johndoe@gmail.com'), ('Sam Doe', 'samdoe@gmail.com'), ('Will Doe', 'willdoe@gmail.com');
 ```
-
-Et vous verrez :
 ```
 Query OK, 3 rows affected (0.01 sec)
 Enregistrements: 3  Doublons: 0  Avertissements: 0
@@ -323,7 +317,6 @@ Cette requête sélectionne toutes les données de toutes les colonnes de la tab
 ```
 SELECT * FROM users;
 ```
-Et vous verrez :
 ```
 +----+----------+------+-------------------+
 | id | name     | age  | email             |
@@ -585,6 +578,3 @@ La clé étrangère (FOREIGN KEY) maintient l’intégrité référentielle entr
 - Elle peut contenir des valeurs NULL.
 - C'est une clé utilisée pour lier deux tables ensemble.
 - Elle doit correspondre à une valeur existante de la PRIMARY KEY dans une autre table.
-
-
-
