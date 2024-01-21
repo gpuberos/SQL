@@ -34,11 +34,11 @@ Par exemple, si vous avez une table de clients, vous pouvez définir une contrai
 Il existe plusieurs types de bases de données, chacun ayant ses propres avantages et inconvénients.  
 La principale différence entre les types de bases de données réside dans la manière dont les données sont stockées. 
 
-| Type de base de données             |	Utilisation	                                                                                                    | Comment sont stockées les données                                                | Pour quel type d’usage                                                                          |
+| Type de base de données             | Utilisation                                                                                                     | Comment sont stockées les données                                                | Pour quel type d’usage                                                                          |
 | ----------------------------------- | --------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| Bases de données relationnelles	    | - Stockage de données structurées <br> - transactions complexes <br> - requêtes ad hoc                          |	Les données sont stockées dans des tables                                        | Applications qui nécessitent une structure de données complexe et des requêtes complexes        |
-| Bases de données orientées objet    |	- Stockage de données complexes et hiérarchiques <br> - relations complexes entre les données                   | Les données sont stockées sous forme d’objets et de classes                      | Applications qui nécessitent des données complexes et des relations complexes entre les données |
-| Bases de données non relationnelles |	- Stockage de données non structurées et semi-structurées <br> - grande évolutivité <br> - grande disponibilité |	Les données sont stockées sous forme de documents, de graphes, de colonnes, etc. | Applications qui nécessitent une grande quantité de données et une évolutivité horizontale      |
+| Bases de données relationnelles     | - Stockage de données structurées <br> - transactions complexes <br> - requêtes ad hoc                          | Les données sont stockées dans des tables                                        | Applications qui nécessitent une structure de données complexe et des requêtes complexes        |
+| Bases de données orientées objet    | - Stockage de données complexes et hiérarchiques <br> - relations complexes entre les données                   | Les données sont stockées sous forme d’objets et de classes                      | Applications qui nécessitent des données complexes et des relations complexes entre les données |
+| Bases de données non relationnelles | - Stockage de données non structurées et semi-structurées <br> - grande évolutivité <br> - grande disponibilité | Les données sont stockées sous forme de documents, de graphes, de colonnes, etc. | Applications qui nécessitent une grande quantité de données et une évolutivité horizontale      |
 
 ### Bases de données relationnelles
 
@@ -68,11 +68,11 @@ Par exemple, dans le contexte d’une base de données non relationnelle, l’é
 
 Les bases de données relationnelles, objet et non relationnelles ont chacune leurs avantages et inconvénients :
 
-| Type de base de données              | Avantages                                                                                     | Inconvénients                                                                     |
-| ------------------------------------ | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| Bases de données relationnelles      | - Stockage de données structurées <br> - Transactions complexes <br> - Requêtes ad hoc[^8]    | - Difficiles à mettre à l’échelle <br> - Pas adaptées aux données non structurées |
-| Bases de données orientées objet     | - Stockage de données complexes et hiérarchiques <br> - Relations complexes entre les données | - Pas adaptées aux données non structurées <br> - Peu courantes                   |
-| Bases de données non relationnelles  | - Grande évolutivité <br> - Grande disponibilité <br> - Adaptées aux données non structurées  | - Peu adaptées aux transactions complexes <br> - Peu adaptées aux requêtes ad hoc |
+| Type de base de données             | Avantages                                                                                     | Inconvénients                                                                     |
+| ----------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| Bases de données relationnelles     | - Stockage de données structurées <br> - Transactions complexes <br> - Requêtes ad hoc[^8]    | - Difficiles à mettre à l’échelle <br> - Pas adaptées aux données non structurées |
+| Bases de données orientées objet    | - Stockage de données complexes et hiérarchiques <br> - Relations complexes entre les données | - Pas adaptées aux données non structurées <br> - Peu courantes                   |
+| Bases de données non relationnelles | - Grande évolutivité <br> - Grande disponibilité <br> - Adaptées aux données non structurées  | - Peu adaptées aux transactions complexes <br> - Peu adaptées aux requêtes ad hoc |
 
 [^8]: Une requête ad hoc est une requête SQL qui est écrite pour une utilisation unique.  
 Elle est généralement utilisée pour extraire des données spécifiques d’une base de données qui ne sont pas incluses dans les rapports standard. Les requêtes ad hoc sont souvent utilisées pour répondre à des questions spécifiques ou pour résoudre des problèmes spécifiques.  
@@ -100,6 +100,12 @@ Les performances d’écriture et de lecture diffèrent en fonction de leur stru
 
 Nous reviendrons plus en détails sur [les opérations fondamentales en SQL](#les-opérations-fondamentales-en-sql).
 
+> [!TIP] Pour faire des commentaires dans une requête SQL
+>   
+> Commentaires sur une ligne : Les doubles tirets `--` Ceci est un commentaire
+> Commentaires multi-lignes : Tout ce qui est compris entre `/*` et `*/` est considéré comme commentaire
+
+
 ## Les types de données
 
 Liste exhaustive des types de données les plus couramment utilisés :  
@@ -125,7 +131,7 @@ Liste exhaustive des types de données les plus couramment utilisés :
 > Si vous utilisez l’encodage UTF-8, chaque caractère peut compter pour plus d’un octet.  
 > Par exemple, le caractère `é` peut compter pour deux octets.
 
-> [!TIP]
+> [!TIP] Plus de types de données
 > Si vous souhaitez plus de types de données, n'hésitez pas à consulter le site [developpement-informatique.com](https://developpement-informatique.com/article/282/types-de-donnees-sql).
 
 ## Prérequis environnement de travail MySQL
@@ -152,11 +158,11 @@ Pour vérifier que le service wampmysql64 est bien lancé :
 
 ### Activation de l'UTF-8 de manière globale sur le serveur MySQL
 
-> [!WARNING]
-> **Correctif** pour la limitation du nombre de caractères au niveau de VARCHAR() sous Windows 11. Nécessite la version MySQL 8.2.0.  
+> [!WARNING] Correctif pour la limitation du nombre de caractères au niveau de VARCHAR() sous Windows 11
+> Nécessite la version MySQL 8.2.0.  
 > Modifier votre fichier à l'aide de l'application Bloc-notes `my.ini` en ajoutant à la suite de `port=3306` (en fin de fichier), les lignes `character_set_server=utf8` et `collation_server=utf8_general_ci`.  
 > Par défaut le chemin d'accès est : `C:\wamp64\bin\mysql\mysql8.2.0\my.ini`.
-> ```
+> ```ini
 > [mysqld]
 > port=3306
 > character_set_server=utf8
@@ -218,11 +224,9 @@ mysql>
 ```
 **Nous sommes prêts à taper du code SQL.**
 
-> [!NOTE]
-> Par défaut, il n'y a pas de mot de passe pour se connecter au serveur MySQL de WampServer.
+> [!NOTE] Par défaut, il n'y a pas de mot de passe pour se connecter au serveur MySQL de WampServer.
 
-> [!TIP] 
-> Effacer l’écran dans l’invite de commande de mysql :
+> [!TIP] Effacer l'écran dans l'invite de commande de MySQL
 > ```
 > system cls;
 > ```
@@ -238,7 +242,7 @@ En SQL, les instructions sont généralement écrites en majuscules, car ce sont
 
 Pour afficher toutes les bases de données, vous pouvez utiliser l’instruction `SHOW DATABASES` comme ceci :
 
-```
+```sql
 SHOW DATABASES;
 ```
 ```
@@ -257,7 +261,7 @@ SHOW DATABASES;
 
 Utiliser la commande `USE` pour sélectionner la base de données `firstdatabase`. Après avoir exécuté cette commande, toutes les opérations SQL que vous effectuez seront appliquées à `firstdatabase` jusqu’à ce que vous changiez de base de données ou que vous fermiez la connexion.
 
-```
+```sql
 USE firstdatabase;
 ```
 ```
@@ -267,7 +271,7 @@ Cela signifie que vous travaillez maintenant avec la base de données `firstdata
 
 ### 2. Créer une table `users` avec les champs `id`, `name`, `age` et `email`
 
-```
+```sql
 CREATE TABLE users(
     id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(110),
@@ -291,7 +295,7 @@ Description de la propriété et des contraintes appliquées aux champs :
 
 ### 3. Décrire la structure de la table `users` avec la commande `DESC`
 
-```
+```sql
 DESC users;
 ```
 ```
@@ -308,7 +312,7 @@ Cette commande affichera la structure de la table `users`, y compris les noms de
 
 ### 4. Créer 3 utilisateurs
 
-```
+```sql
 INSERT INTO users (name, email)
 VALUES ('John Doe', 'johndoe@gmail.com'), ('Sam Doe', 'samdoe@gmail.com'), ('Will Doe', 'willdoe@gmail.com');
 ```
@@ -326,7 +330,7 @@ Cette partie de la requête spécifie les données que vous voulez insérer. Cha
 ### 5. Supprimer l'utilisateur avec l'`id` 1
 
 Cette requête sélectionne toutes les données de toutes les colonnes de la table users. Le symbole `*` signifie “toutes les colonnes” :
-```
+```sql
 SELECT * FROM users;
 ```
 ```
@@ -340,20 +344,20 @@ SELECT * FROM users;
 ```
 
 Cette requête supprime la ligne de la table users où la colonne `id` est égale à 1 :
-```
+```sql
 DELETE FROM users WHERE id = 1;
 ```
 
 ### 6. Supprimer la table `users`
 
 Une fois que vous exécutez cette commande, toutes les données stockées dans la table users seront définitivement supprimées.
-```
+```sql
 DROP TABLE users;
 ```
 
 ### 7. Créer une table `users` avec `id`, `name` et `email`
 
-```
+```sql
 CREATE TABLE users (
 id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 name VARCHAR(100),
@@ -373,7 +377,7 @@ email VARCHAR(255) NOT NULL UNIQUE
 ### 8. Ajouter une nouvelle colonne `status` à la table `users`
 
 Cette requête ajoute une nouvelle colonne status à la table users. Cette colonne est de type BOOLEAN et ne peut pas être NULL.
-```
+```sql
 ALTER TABLE users ADD status BOOLEAN NOT NULL;
 ```
 ```
@@ -388,11 +392,11 @@ ALTER TABLE users ADD status BOOLEAN NOT NULL;
 ```
 
 Cette requête insère une nouvelle ligne dans la table users avec la valeur 1 pour la colonne status.
-```
+```sql
 INSERT INTO users (status) VALUES (1);
 ```
 Cette requête sélectionne toutes les données de la table users où la colonne status est égale à 1.
-```
+```sql
 SELECT * FROM users WHERE status = 1;
 ```
 ```
@@ -413,19 +417,19 @@ C'est l'opération la plus courante. Elle permet de récupérer des données sp�
 `FROM` :  Spécifie la table à partir de laquelle vous souhaitez récupérer les données.  
 
 1. Sélectionner une colonne spécifique :
-```
+```sql
 SELECT nom_du_champ FROM nom_du_tableau;
 ```
 Cette requête SQL sélectionne le champ nom_du_champ de la table nom_du_tableau.  
 
 2. Sélectionner plusieurs colonnes :
-```
+```sql
 SELECT prenom, nom FROM client;
 ```
 Cette requête retourne les prénoms et les noms des clients.  
 
 3. Sélectionner toutes les colonnes :
-```
+```sql
 SELECT * FROM client;
 ```
 Cette requête retourne toutes les colonnes de la table client. 
@@ -438,19 +442,19 @@ Permets d'ajouter de nouvelles lignes de données à une table.
 `VALUES` : fourni les données que vous souhaitez insérer dans une table.
 
 1. Insérer une ligne en spécifiant toutes les colonnes :
-```
+```sql
 INSERT INTO table VALUES ('valeur 1', 'valeur 2', ...);
 ```
 Cette syntaxe oblige à remplir toutes les données, tout en respectant l’ordre des colonnes.
 
 2. Insérer une ligne en spécifiant seulement les colonnes souhaitées :
-```
+```sql
 INSERT INTO table (nom_colonne_1, nom_colonne_2, ...) VALUES ('valeur 1', 'valeur 2', ...);
 ```
 Il est possible de ne pas renseigner toutes les colonnes. De plus, l’ordre des colonnes n’est pas important.
 
 3. Insérer plusieurs lignes à la fois :
-```
+```sql
 INSERT INTO client (prenom, nom, ville, age)  
 VALUES  
 ('John', 'Doe', 'San Francisco', 28),  
@@ -460,24 +464,37 @@ VALUES
 ### Mise à jour de données (UPDATE) :
 
 Modifie les valeurs existantes dans une table.
-```
+```sql
 UPDATE users SET age = 26 WHERE name = 'Doe';
 ```
 
 ### Suppression de données (DELETE) :
 
 Supprime des lignes de données d'une table.
-```
+```sql
 DELETE FROM users WHERE name = 'Doe';
 ```
 
 ### Les clauses
 
+#### IF NOT EXISTS
+
+On retrouve souvent cette clause dans des commandes de création de base de données ou d'objets de bases. Elle permet de vérifier l'existance d'un objet avant de le créer. Si l'objet existe déjà, la commande ne produira aucune erreur et ne s'executera pas.
+
+```sql
+CREATE DATABASE IF NOT EXISTS ecommerce;
+```
+```sql
+CREATE TABLE IF NOT EXISTS Prices (
+    -- Ma requête
+);
+```
+
 #### WHERE
 
 La clause WHERE est utilisée pour filtrer les résultats des requêtes. Elle permet de spécifier des conditions pour restreindre les données renvoyées.
 
-```
+```sql
 SELECT * FROM produits WHERE prix > 50;
 ```
 Cette requête renverra tous les produits dont le prix est supérieur à 50.
@@ -485,7 +502,7 @@ Cette requête renverra tous les produits dont le prix est supérieur à 50.
 #### ORDER BY
 
 Utilisée pour trier les résultats d'une requête.
-```
+```sql
 SELECT * FROM users ORDER BY name ASC;
 ```
 Cette requête trie les utilisateurs par ordre croissant de nom.
@@ -493,7 +510,7 @@ Cette requête trie les utilisateurs par ordre croissant de nom.
 #### LIMIT
 
 Limite le nombre de résultats renvoyés par une requête.
-```
+```sql
 SELECT * FROM users LIMIT 10;
 ```
 Cette requête renverra les 10 premières lignes de la table `users`.
@@ -501,7 +518,7 @@ Cette requête renverra les 10 premières lignes de la table `users`.
 #### AS
 
 Renommer temporairement une colonne ou une table dans le résultat d'une requête. Cela rend les résultats plus lisibles.
-```
+```sql
 SELECT name AS NomUtilisateur FROM users;
 ```
 Cette requête renomme la colonne `name` en `NomUtilisateur`.
@@ -509,11 +526,14 @@ Cette requête renomme la colonne `name` en `NomUtilisateur`.
 #### SET
 
 Dans un `UPDATE`, `SET` est utilisée pour définir les colonnes et les valeurs qui doivent être mises à jour dans une table.
+```sql
+UPDATE users SET age = 30 WHERE name = 'Doe';
+```
 
 #### GROUP BY
 
 Regrouper les résultats d'une requête en fonction des valeurs d'une ou de plusieurs colonnes.
-````
+````sql
 SELECT ville, COUNT(*) as NombreUtilisateurs FROM utilisateurs GROUP BY ville;
 ````
 Cette requête renverra le nombre d'utilisateurs pour chaque ville.
@@ -523,7 +543,7 @@ Cette requête renverra le nombre d'utilisateurs pour chaque ville.
 #### NOT
 
 L'opérateur NOT est utilisé pour nier une condition dans une clause WHERE
-```
+```sql
 SELECT * FROM produits WHERE NOT prix > 50;
 ```
 Cette requête renverra tous les produits dont le prix n'est pas supérieur à 50.
@@ -531,7 +551,7 @@ Cette requête renverra tous les produits dont le prix n'est pas supérieur à 5
 #### AND
 
 L'opérateur AND est utilisé pour combiner plusieurs conditions dans une clause WHERE.
-```
+```sql
 SELECT * FROM users WHERE age > 30 AND ville = 'Marseille';
 ```
 Cette requête renverra tous les utilisateurs dont l'âge est supérieur à 30 et qui habitent à Marseille.
@@ -541,81 +561,354 @@ Cette requête renverra tous les utilisateurs dont l'âge est supérieur à 30 e
 #### DROP
 La commande DROP en SQL est utilisée pour supprimer des objets de la base de données, tels que des tables, des bases de données, des vues, des index, etc.
 
-> [!CAUTION]
+> [!CAUTION] Attention
 > La commande `DROP` est irréversible et peut entraîner la perte de données importantes. Elle efface définitivement les objets de la base de données.    Assurez-vous d'être certain de vouloir supprimer un objet avant de l'utiliser. Par précaution, il est recommandé de sauvegarder vos données pour éviter toute perte accidentelle.
 
 Utilisations courantes de cette commande :
 1. Suppression d'une base de données :
-```
+```sql
 DROP DATABASE nom_de_la_base_de_donnees;
 ```
 Cela supprime complètement la base de données, y compris toutes les tables, vues, procédures stockées, etc. associées.
 
 2. Suppression d'une table :
-```
+```sql
 DROP TABLE nom_de_la_table;
 ```
 Cette commande supprime la table spécifiée de la base de données, y compris toutes les données et la structure de la table.
 
 3. Suppression d'une vue :
-```
+```sql
 DROP VIEW nom_de_la_vue;
 ```
 Cela supprime la vue spécifiée de la base de données.
 
 #### ALTER TABLE
 
-La commande `ALTER TABLE` en SQL est utilisée pour modifier la structure d’une table existante (altérer).
+La commande `ALTER TABLE` en SQL est utilisée pour modifier (altérer) la structure d’une table existante .
 
 Utilisations courantes de cette commande :
 
 1. Ajouter une colonne :
-```
+```sql
 ALTER TABLE nom_table ADD nom_colonne type_donnees;
 ```
 2. Supprimer une colonne :
-```
+```sql
 ALTER TABLE nom_table DROP COLUMN nom_colonne;
 ```
 3. Modifier une colonne :
-```
+```sql
 ALTER TABLE nom_table MODIFY nom_colonne type_donnees;
 ```
 4. Renommer une colonne :
-```
+```sql
 ALTER TABLE nom_table CHANGE colonne_ancien_nom colonne_nouveau_nom type_donnees;
 ```
 
-## Les jointures
+## Introduction aux relations Many-to-Many avec tables intermédiaires en MySQL
 
-Les jointures permettent de combiner les données de plusieurs tables en fonction de certaines conditions. Par exemple, si vous avez une table pour les utilisateurs et une autre pour les commandes, une jointure pourrait vous montrer les utilisateurs qui ont passé des commandes.
+### Tables intermédiaires
 
+Une table intermédiaire est également appelée table de jonction ou table associative. Elle est utilisée pour représenter une relation many-to-many entre deux tables. Dans une base de données relationnelle, une relation many-to-many se produit lorsque plusieurs enregistrements dans une table peuvent être associés à plusieurs enregistrements dans une autre table, et vice versa.
+
+Voici quelques points clés sur les tables intermédiaires :
+
+- Résolution des relations Many-to-Many : Si vous avez deux tables qui ont une relation de plusieurs à plusieurs, vous pouvez utiliser une table intermédiaire pour résoudre cette relation en deux relations de un à plusieurs.
+- Pas de PRIMARY KEY : Une table intermédiaire n’a pas nécessairement sa propre clé primaire. Elle utilise généralement une combinaison de clés étrangères provenant des deux tables qu’elle relie comme clé primaire.
+- FOREIGN KEY : Les clés étrangères dans une table intermédiaire font référence aux clés primaires des tables qu’elle relie.
+- Données supplémentaires : Parfois, une table intermédiaire peut également stocker des informations supplémentaires qui sont pertinentes pour la relation entre les deux tables.
+
+Exemple :   
+Supposons que nous ayons deux tables, etudiants et cours, où un étudiant peut être inscrit à plusieurs cours, et un cours peut avoir plusieurs étudiants inscrits. La table intermédiaire inscriptions est utilisée pour représenter cette relation.
+
+```sql
+CREATE TABLE etudiants (
+    id INT PRIMARY KEY,
+    nom VARCHAR(50)
+);
+
+CREATE TABLE cours (
+    id INT PRIMARY KEY,
+    nom_cours VARCHAR(50)
+);
+
+CREATE TABLE inscriptions (
+    etudiant_id INT,
+    cours_id INT,
+    PRIMARY KEY (etudiant_id, cours_id),
+    FOREIGN KEY (etudiant_id) REFERENCES etudiants(id),
+    FOREIGN KEY (cours_id) REFERENCES cours(id)
+);
 ```
-SELECT users.name, commandes.produit
-FROM users
-JOIN commandes ON users.id = commandes.user_id;
-```
+#### Cardinalités et types de relations
 
-> [!NOTE]
-> L'utilisation du point `.` dans la clause `SELECT`, comme dans `users.name`, indique que la colonne `name` provient de la table `users`. En SQL, cela est utilisé pour spécifier de quelle table provient une colonne lorsque les colonnes partagent le même nom dans différentes tables. Le point sert à se déplacer dans l'objet.
+En MySQL, la cardinalité fait référence au nombre de relations entre deux tables. Il existe quatre types de relations, chacune avec une cardinalité différente.
 
-### PRIMARY KEY et FOREIGN KEY
+- **Relation Un à Un** (1:1) *(ONE TO ONE)* :  
+  Chaque enregistrement dans la table `etudiants` est associé à un seul enregistrement dans la table `inscriptions`, et vice versa.
+- **Relation Un à Plusieurs** (1:N) *(ONE TO MANY)* :  
+  Chaque enregistrement dans la table `etudiants` peut être associé à plusieurs enregistrements dans la table `inscriptions` (et vice versa).
+- **Relation Plusieurs à Un** (N:1) *(MANY TO ONE)*:  
+  Chaque enregistrement dans la table `cours` peut être associé à plusieurs enregistrements dans la table `inscriptions` (et vice versa).
+- **Relation Plusieurs à Plusieurs** (N:N) *(MANY TO MANY)* :  
+  Chaque enregistrement dans la table `etudiants` peut être associé à plusieurs enregistrements dans la table `cours`, et vice versa.
+
+#### PRIMARY KEY et FOREIGN KEY
 
 Les concepts de PRIMARY KEY et FOREIGN KEY sont cruciaux en SQL pour établir des relations entre les tables d'une base de données relationnelle.
 
-#### PRIMARY KEY (clé primaire)
+##### PRIMARY KEY *(clé primaire)*
 
-La clé primaire (PRIMARY KEY) assure l’unicité et l’intégrité des données dans une table.
+La clé primaire (PRIMARY KEY) identifie de manière unique chaque enregistrement dans une table. Elle garantit l’unicité et l’intégrité des données dans une table.
 
 - Une table ne peut avoir qu’une seule clé primaire.
 - Elle ne peut pas contenir de valeurs NULL.
 - Elle identifie de manière unique chaque enregistrement dans une table.
 
-#### FOREIGN KEY (clé étrangère)
+##### FOREIGN KEY *(clé étrangère)*
 
-La clé étrangère (FOREIGN KEY) maintient l’intégrité référentielle entre deux tables.
+La clé étrangère (FOREIGN KEY) établit une relation entre deux tables. Elle pointe vers la clé primaire d'une autre table, assurant l'intégrité référentielle entre deux tables.
 
 - Une table peut avoir plusieurs clés étrangères.
 - Elle peut contenir des valeurs NULL.
 - C'est une clé utilisée pour lier deux tables ensemble.
 - Elle doit correspondre à une valeur existante de la PRIMARY KEY dans une autre table.
+
+### Les jointures
+
+Les jointures (INNER JOIN, LEFT JOIN, RIGHT JOIN) sont utilisées pour combiner les données de plusieurs tables en fonction de conditions spécifiées. Elles sont essentielles pour récupérer des données à partir de relations many-to-many.
+
+#### INNER JOIN
+
+Retourne les lignes lorsque des correspondances sont trouvées dans les deux tables.
+
+![Inner Join](/assets/img/join/inner-join.svg)
+
+```
++------------------------------+--------------------------+
+| PRICES                       | QUANTITIES               |
++---------------+---------+----+---------------+----------+
+| Product       | Price   | id | Product       | Quantity |
++---------------+---------+----+---------------+----------+
+| CPU           |  500.00 |  1 | CPU           |       45 |
+| Motherboard   |  125.00 |  2 | Motherboard   |      123 |
+| Memory        |   68.00 |  3 | Memory        |       48 |
+| SSD           |  128.00 |  4 | SSD           |       62 |
+| GPU           | 1290.00 |  5 | GPU           |       20 |
+| Powersupply   |  149.00 |  6 | CPU Coolers   |       19 |
+| Computer Case |   99.00 |  7 | Internal Fans |       92 |
++---------------+---------+----+---------------+----------+
+```
+
+```sql
+-- Sélectionne toutes les colonnes de Prices et la colonne Quantity de Quantities
+-- en utilisant une jointure interne (INNER JOIN) sur la colonne Product
+SELECT Prices.*, Quantities.Quantity
+FROM Prices
+-- Jointure interne sur la colonne Product pour lier les lignes des deux tables
+INNER JOIN Quantities ON Prices.Product = Quantities.Product;
+```
+```
++---------------+---------+----------+
+| Product       | Price   | Quantity |
++---------------+---------+----------+
+| CPU           |  500.00 |       45 |
+| Motherboard   |  125.00 |      123 |
+| Memory        |   68.00 |       48 |
+| SSD           |  128.00 |       62 |
+| GPU           | 1290.00 |       20 |
+| Powersupply   |  149.00 |       92 |
+| Computer Case |   99.00 |       19 |
++---------------+---------+----------+
+```
+> [!NOTE] Utilisation du point
+> L'utilisation du point `.` dans la clause `SELECT`, comme dans `Quantities.Quantity`, indique que la colonne `Quantity` provient de la table `Quantities`. En SQL, cela est utilisé pour spécifier de quelle table provient une colonne lorsque les colonnes partagent le même nom dans différentes tables. Le point sert à se déplacer dans l'objet.
+
+> [!CAUTION] Attention
+> Si un produit est supprimé, alors on ne verra ni son prix, ni la quantité dans la liste puisque `INNER JOIN` retourne uniquement les résultats ou la condition est vraie dans les 2 tables.
+
+#### LEFT JOIN
+
+Retourne toutes les lignes de la table de gauche et les lignes correspondantes de la table de droite. Si aucune correspondance n'est trouvée, les colonnes de la table de droite contiennent des valeurs NULL.
+
+Dans notre exemple de base de données, il y a deux produits - Powersupply et Computer Case - sur la "gauche" (table Price) qui n'ont pas d'entrée correspondante sur la "droite" (table Quantities). Dans une jointure gauche, ces lignes sont incluses dans l'ensemble de résultats avec un NULL dans la colonne Quantité. Les autres lignes du résultat sont identiques à celles de la jointure interne.
+
+![Left Join](/assets/img/join/Left-join.svg)
+
+```
++------------------------------+--------------------------+
+| PRICES                       | QUANTITIES               |
++---------------+---------+----+---------------+----------+
+| Product       | Price   | id | Product       | Quantity |
++---------------+---------+----+---------------+----------+
+| CPU           |  500.00 |  1 | CPU           |       45 |
+| Motherboard   |  125.00 |  2 | Motherboard   |      123 |
+| Memory        |   68.00 |  3 | Memory        |       48 |
+| SSD           |  128.00 |  4 | SSD           |       62 |
+| GPU           | 1290.00 |  5 | GPU           |       20 |
+| Powersupply   |  149.00 |  6 | CPU Coolers   |       19 |
+| Computer Case |   99.00 |  7 | Internal Fans |       92 |
++---------------+---------+----+---------------+----------+
+```
+
+```sql
+SELECT Quantities.Product, Prices.Price, Quantities.Quantity
+FROM Prices
+LEFT JOIN Quantities ON Prices.Product = Quantities.Product;
+```
+```
++---------------+---------+----------+
+| Product       | Price   | Quantity |
++---------------+---------+----------+
+| CPU           |  500.00 |       45 |
+| Motherboard   |  125.00 |      123 |
+| Memory        |   68.00 |       48 |
+| SSD           |  128.00 |       62 |
+| GPU           | 1290.00 |       20 |
+| Powersupply   |  149.00 |     NULL |
+| Computer Case |   99.00 |     NULL |
++---------------+---------+----------+
+```
+#### RIGHT JOIN
+
+Retourne toutes les lignes de la table de droite et les lignes correspondantes de la table de gauche. Si aucune correspondance n'est trouvée, les colonnes de la table de gauche contiennent des valeurs NULL.
+
+![Right Join](/assets/img/join/right-join.svg)
+
+```
++------------------------------+--------------------------+
+| PRICES                       | QUANTITIES               |
++---------------+---------+----+---------------+----------+
+| Product       | Price   | id | Product       | Quantity |
++---------------+---------+----+---------------+----------+
+| CPU           |  500.00 |  1 | CPU           |       45 |
+| Motherboard   |  125.00 |  2 | Motherboard   |      123 |
+| Memory        |   68.00 |  3 | Memory        |       48 |
+| SSD           |  128.00 |  4 | SSD           |       62 |
+| GPU           | 1290.00 |  5 | GPU           |       20 |
+| Powersupply   |  149.00 |  6 | CPU Coolers   |       19 |
+| Computer Case |   99.00 |  7 | Internal Fans |       92 |
++---------------+---------+----+---------------+----------+
+```
+
+```sql
+SELECT Prices.Price, Quantities.Product, Quantities.Quantity
+FROM Prices
+RIGHT JOIN Quantities ON Prices.Product = Quantities.Product;
+```
+```
++---------+---------------+----------+
+| Price   | Product       | Quantity |
++---------+---------------+----------+
+|  500.00 | CPU           |       45 |
+|  125.00 | Motherboard   |      123 |
+|   68.00 | Memory        |       48 |
+|  128.00 | SSD           |       62 |
+| 1290.00 | GPU           |       20 |
+|    NULL | CPU Coolers   |       19 |
+|    NULL | Internal Fans |       92 |
++---------+---------------+----------+
+
+```
+#### FULL JOIN
+
+Retourne toutes les lignes lorsque qu'il y a une correspondance dans l'une des tables.
+
+![Full Join](/assets/img/join/full-join.svg)
+
+```
++----------------+---------+--------------------+----------+
+| PRICES.PRODUCT | PRICE   | QUANTITIES.PRODUCT | QUANTITY |
++----------------+---------+--------------------+----------+
+| CPU            |  500.00 | CPU                |       45 |
+| Motherboard    |  125.00 | Motherboard        |      123 |
+| Memory         |   68.00 | Memory             |       48 |
+| SSD            |  128.00 | SSD                |       62 |
+| GPU            | 1290.00 | GPU                |       20 |
+| Powersupply    |  149.00 | Powersupply        |       92 |
+| Computer Case  |   99.00 | Computer Case      |       19 |
++----------------+---------+--------------------+----------+
+
+```
+
+> [!IMPORTANT]
+> MySQL ne prend pas en charge la syntaxe `FULL JOIN`.
+> 
+
+> [!TIP] Solution alternative
+> L'opérateur `UNION` supprime automatiquement les doublons dans le résultat. Cette requête combine les résultats des `LEFT JOIN` et `RIGHT JOIN`, offrant un résultat similaire à qu'on obtiendrait avec un `FULL JOIN` dans d'autres bases de données. Les colonnes `Product`, `Price` et `Quantity` sont sélectionnées dans chaque partie de l'union pour garantir que tous les résultats sont inclus.
+
+```sql
+-- LEFT JOIN
+SELECT Prices.Product AS "PRICES.PRODUCT", Prices.Price, Quantities.Product AS "QUANTITIES.PRODUCT", Quantities.Quantity
+FROM Prices
+LEFT JOIN Quantities ON Prices.Product = Quantities.Product
+
+UNION
+
+-- RIGHT JOIN
+SELECT Prices.Product AS "PRICES.PRODUCT", Prices.Price, Quantities.Product AS "QUANTITIES.PRODUCT", Quantities.Quantity
+FROM Prices
+RIGHT JOIN Quantities ON Prices.Product = Quantities.Product
+```
+```
++----------------+---------+--------------------+----------+
+| PRICES.PRODUCT | Price   | QUANTITIES.PRODUCT | Quantity |
++----------------+---------+--------------------+----------+
+| CPU            |  500.00 | CPU                |       45 |
+| Motherboard    |  125.00 | Motherboard        |      123 |
+| Memory         |   68.00 | Memory             |       48 |
+| SSD            |  128.00 | SSD                |       62 |
+| GPU            | 1290.00 | GPU                |       20 |
+| Powersupply    |  149.00 | NULL               |     NULL |
+| Computer Case  |   99.00 | NULL               |     NULL |
+| NULL           |    NULL | CPU Coolers        |       19 |
+| NULL           |    NULL | Internal Fans      |       92 |
++----------------+---------+--------------------+----------+
+
+```
+
+#### Database ecommerce pour test des jointures
+
+```
+-- Création de la base de données
+CREATE DATABASE IF NOT EXISTS ecommerce;
+
+-- Sélectionne et utilise la base de données
+USE ecommerce;
+
+-- Création de la table Prices avec une colonne id en auto-incrément
+CREATE TABLE IF NOT EXISTS Prices (
+    -- id INT AUTO_INCREMENT PRIMARY KEY,
+    Product VARCHAR(50) UNIQUE,
+    Price DECIMAL(10, 2)
+);
+
+-- Création de la table Quantities avec une colonne id en auto-incrément
+CREATE TABLE IF NOT EXISTS Quantities (
+    -- id INT AUTO_INCREMENT PRIMARY KEY,
+    Product VARCHAR(50) UNIQUE,
+    Quantity INT
+);
+
+-- Insertion des données dans la table Prices
+INSERT INTO Prices (Product, Price) VALUES
+    ('CPU', 500.00),
+    ('Motherboard', 125.00),
+    ('Memory', 68.00),
+    ('SSD', 128.00),
+    ('GPU', 1290.00),
+    ('Powersupply', 149.00),
+    ('Computer Case', 99.00);
+
+-- Insertion des données dans la table Quantities
+INSERT INTO Quantities (Product, Quantity) VALUES
+    ('CPU', 45),
+    ('Motherboard', 123),
+    ('Memory', 48),
+    ('SSD', 62),
+    ('GPU', 20),
+    ('CPU Coolers', 19),
+    ('Internal Fans', 92);
+```

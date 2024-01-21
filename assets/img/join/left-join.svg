@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="101.71337mm"
+   height="67.204163mm"
+   viewBox="0 0 101.71337 67.204163"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   sodipodi:docname="Jointures-Schema.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#999999"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.45745301"
+     inkscape:cx="-1102.8455"
+     inkscape:cy="236.08982"
+     inkscape:window-width="2560"
+     inkscape:window-height="1361"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-3.8070198,-141.29422)">
+    <g
+       id="g6704"
+       transform="translate(-45.396668,-66.868065)"
+       inkscape:label="LeftJoin">
+      <circle
+         style="display:inline;fill:#eff1f4;fill-opacity:1;fill-rule:evenodd;stroke:#00b4ab;stroke-width:1.05833;stroke-dasharray:none;stroke-opacity:1"
+         id="path111-5-2-4-8"
+         cx="117.31497"
+         cy="241.76436"
+         r="33.072918" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:6.35px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="118.59193"
+         y="243.90067"
+         id="text3177-8-5"
+         inkscape:label="text Quantities"><tspan
+           sodipodi:role="line"
+           id="tspan3175-6-9"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;font-family:Arial;-inkscape-font-specification:Arial;fill:#484f58;fill-opacity:1;stroke-width:0.264583"
+           x="118.59193"
+           y="243.90067">Quantities</tspan></text>
+      <circle
+         style="display:inline;fill:#4f5d95;fill-opacity:1;fill-rule:evenodd;stroke:#00b4ab;stroke-width:1.05833;stroke-dasharray:none;stroke-opacity:1"
+         id="path111-8-7-0"
+         cx="82.805771"
+         cy="241.76436"
+         r="33.072918"
+         inkscape:label="CircleL" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:6.35px;line-height:6.35px;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="82.768562"
+         y="243.37822"
+         id="text12013-5-2"
+         inkscape:label="text Inner Join"><tspan
+           sodipodi:role="line"
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;font-family:Arial;-inkscape-font-specification:'Arial Italic';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+           x="82.768562"
+           y="243.37822"
+           id="tspan12015-3-7">Left Join</tspan></text>
+    </g>
+  </g>
+</svg>
