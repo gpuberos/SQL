@@ -92,13 +92,13 @@ Les performances d’écriture et de lecture diffèrent en fonction de leur stru
 
 1. **Tables** : Une base de données SQL est composée de tables. Chaque table est un peu comme un tableau Excel, avec des lignes et des colonnes. Chaque ligne représente une entrée distincte (par exemple, un employé dans une entreprise), et chaque colonne représente une caractéristique de cette entrée (par exemple, le nom, l’adresse, le salaire de l’employé).
 2. **Requêtes** : Les requêtes sont comme des questions que vous posez à la base de données. Par exemple, “Quel est le salaire moyen de tous les employés ?” ou “Combien d’employés vivent à Paris ?”. En SQL, ces questions sont formulées en utilisant des instructions spécifiques.
-3. **Instructions SQL de base** : Il existe plusieurs types d’instructions SQL, mais voici les plus courantes :
-- `SELECT` : utilisée pour sélectionner des données d’une base de données.
-- `INSERT INTO` : utilisée pour insérer de nouvelles données dans une base de données.
-- `UPDATE` : utilisée pour modifier des données existantes dans une base de données.
-- `DELETE` : utilisée pour supprimer des données d’une base de données.
+3. **Instructions SQL de base** : Il existe plusieurs types d’instructions SQL, mais voici les plus courantes :  
+    - `SELECT` : utilisée pour sélectionner des données d’une base de données.
+    - `INSERT INTO` : utilisée pour insérer de nouvelles données dans une base de données.
+    - `UPDATE` : utilisée pour modifier des données existantes dans une base de données.
+    - `DELETE` : utilisée pour supprimer des données d’une base de données.
 
-Nous reviendrons plus en détails sur Les opérations fondamentales en SQL.
+Nous reviendrons plus en détails sur [les opérations fondamentales en SQL](#les-opérations-fondamentales-en-sql).
 
 ## Les types de données
 
