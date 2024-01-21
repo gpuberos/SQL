@@ -391,7 +391,7 @@ SELECT * FROM users WHERE status = 1;
 +----+------+-------+--------+
 ```
 
-## Les opérations fondamentales en SQL :
+## Les opérations fondamentales en SQL
 
 ### Sélection de données (SELECT)
 
