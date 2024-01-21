@@ -456,7 +456,7 @@ UPDATE users SET age = 26 WHERE name = 'Doe';
 
 Supprime des lignes de données d'une table.
 ```
-DELETE FROM users WHERE nom = 'Doe';
+DELETE FROM users WHERE name = 'Doe';
 ```
 
 ### Les clauses
