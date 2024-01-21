@@ -8,7 +8,7 @@ Le langage de requête structuré (SQL : Structured Query Language) est un langa
 
 Une base de données est un ensemble organisé de données stockées de manière structurée, permettant de stocker, gérer et récupérer facilement des informations. Les bases de données sont utilisées pour stocker des données de manière à ce qu'elles puissent être rapidement et facilement accessibles, gérées et mises à jour à l’aide d’un système de gestion de base de données (SGBD). Les bases de données sont largement utilisées dans les applications informatiques, les sites web et de nombreux autres domaines pour stocker et gérer efficacement les informations.
 
-## Dans quel buts ?
+## Dans quels buts ?
 
 1. **Stockage de données structurées** : Les bases de données permettent de stocker des données de manière structurée, ce qui facilite l'organisation et la récupération des informations. Par exemple, une entreprise peut utiliser une base de données pour stocker les informations des clients, telles que les noms, adresses et historiques d'achats.
 2. **Manipulation efficace des données** : Les bases de données facilitent la recherche, la mise à jour et la suppression rapides des données. Par exemple, un site de commerce électronique peut utiliser une base de données pour gérer son inventaire, permettant aux utilisateurs de rechercher des produits, d'ajouter des articles à leur panier, et de passer des commandes de manière efficace.
@@ -114,7 +114,7 @@ Liste exhaustive des types de données les plus couramment utilisés :
 > Par exemple, le caractère `é` peut compter pour deux octets.
 
 > [!TIP]
-> Si vous souhaitez plus de type de données n'hésitez pas à consulter le site [developpement-informatique.com](https://developpement-informatique.com/article/282/types-de-donnees-sql).
+> Si vous souhaitez plus de types de données, n'hésitez pas à consulter le site [developpement-informatique.com](https://developpement-informatique.com/article/282/types-de-donnees-sql).
 
 ## Prérequis environnement de travail MySQL
 
@@ -156,6 +156,8 @@ Pour vérifier que le service wampmysql64 est bien lancé :
 
 ## Connexion au serveur MySQL
 
+Le système de gestion de bases de données pour SQL s'appelle mysql.
+
 1. Ouvrez un terminal (cmd)
 ```
 Microsoft Windows [version 10.0.22631.3007]
@@ -163,8 +165,14 @@ Microsoft Windows [version 10.0.22631.3007]
 
 C:\>
 ```
+2. Pour connaître notre version de mysql :
 
-2. Connectez-vous au serveur MySQL via la commande suivante :
+```
+C:\>mysql --version
+mysql  Ver 8.2.0 for Win64 on x86_64 (MySQL Community Server - GPL)
+```
+
+3. Connectez-vous au serveur MySQL via la commande suivante :
 
 ```
 C:\>mysql -u root -p
@@ -178,7 +186,7 @@ Saisissez votre mot de passe pour pouvoir vous connecter :
 Enter password:
 ```
 
-Une fois connecté votre terminal devrait afficher :
+Une fois connecté, votre terminal devrait afficher :
 ```
 C:\>mysql -u root -p
 Enter password:
@@ -196,9 +204,387 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 mysql>
 ```
+**Nous sommes prêts à taper du code SQL.**
 
 > [!NOTE]
 > Par défaut, il n'y a pas de mot de passe pour se connecter au serveur MySQL de WampServer.
+
+> [!TIP] 
+> Effacer l’écran dans l’invite de commande de mysql :
+> ```
+> system cls;
+> ```
+
+## Création de notre première base de données
+
+### 1. Créer une base de données `firstdatabase`
+
+```
+CREATE DATABASE firstdatabase;
+```
+En SQL, les instructions sont généralement écrites en majuscules, car ce sont des mots réservés mysql, bien que le langage soit insensible à la casse. Le nom de la base de données est généralement écrit en minuscules. Chaque instruction doit être terminée par un point-virgule `;`.
+
+Pour afficher toutes les bases de données, vous pouvez utiliser l’instruction `SHOW DATABASES` comme ceci :
+
+```
+SHOW DATABASES;
+```
+
+Et vous verrez :
+```
++--------------------+
+| Database           |
++--------------------+
+| dbmovie_utopia     |
+| firstdatabase      |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| vehicule_base      |
++--------------------+
+```
+
+Utiliser la commande `USE` pour sélectionner la base de données `firstdatabase`. Après avoir exécuté cette commande, toutes les opérations SQL que vous effectuez seront appliquées à `firstdatabase` jusqu’à ce que vous changiez de base de données ou que vous fermiez la connexion.
+
+```
+USE firstdatabase;
+```
+Et vous verrez :
+```
+Database changed
+```
+Cela signifie que vous travaillez maintenant avec la base de données `firstdatabase`. Toutes les tables que vous créez, les requêtes que vous exécutez, etc., seront dans le contexte de `firstdatabase`.
+
+### 2. Créer une table `users` avec les champs `id`, `name`, `age` et `email`
+
+```
+CREATE TABLE users(
+    id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(110),
+    age INTEGER,
+    email VARCHAR(255) NOT NULL UNIQUE
+);
+```
+Cette table contient les colonnes suivantes :
+
+- `id` : un identifiant unique pour chaque utilisateur, qui s’auto-incrémente à chaque nouvel enregistrement.
+- `name` : le nom de l’utilisateur, qui est une chaîne de caractères pouvant contenir jusqu’à 110 caractères.
+- `age` : l’âge de l’utilisateur, qui est un nombre entier.
+- `email` : l’adresse e-mail de l’utilisateur, qui est une chaîne de caractères unique et obligatoire pouvant contenir jusqu’à 255 caractères.
+
+Description de la propriété et des contraintes appliquées aux champs :
+
+- `AUTO_INCREMENT` : Cette propriété est généralement utilisée sur une colonne d’identifiant pour générer automatiquement une valeur unique à chaque fois qu’une nouvelle ligne est insérée dans la table.
+- `NOT NULL` : Cette contrainte garantit qu’une colonne ne peut pas avoir de valeur NULL. En d’autres termes, la colonne doit toujours avoir une valeur.
+- `PRIMARY KEY` : Cette contrainte combine les contraintes NOT NULL et UNIQUE pour garantir qu’une colonne (ou un ensemble de colonnes) a une valeur unique et qu’elle ne contient jamais de NULL. Une table ne peut avoir qu’une seule clé primaire.
+- `UNIQUE` : Cette contrainte garantit que toutes les valeurs d’une colonne sont différentes.
+
+### 3. Décrire la structure de la table `users` avec la commande `DESC`
+
+```
+DESC users;
+```
+Et vous verrez :
+```
++-------+--------------+------+-----+---------+----------------+
+| Field | Type         | Null | Key | Default | Extra          |
++-------+--------------+------+-----+---------+----------------+
+| id    | int          | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(110) | YES  |     | NULL    |                |
+| age   | int          | YES  |     | NULL    |                |
+| email | varchar(255) | NO   | UNI | NULL    |                |
++-------+--------------+------+-----+---------+----------------+
+```
+Cette commande affichera la structure de la table `users`, y compris les noms des colonnes, les types de données, etc.
+
+### 4. Créer 3 utilisateurs
+
+```
+INSERT INTO users (name, email)
+VALUES ('John Doe', 'johndoe@gmail.com'), ('Sam Doe', 'samdoe@gmail.com'), ('Will Doe', 'willdoe@gmail.com');
+```
+
+Et vous verrez :
+```
+Query OK, 3 rows affected (0.01 sec)
+Enregistrements: 3  Doublons: 0  Avertissements: 0
+```
+Cette requête est une instruction `INSERT INTO` en SQL, qui est utilisée pour insérer de nouvelles lignes dans une table :
+
+- `INSERT INTO users` : Cette partie de la requête spécifie la table dans laquelle vous voulez insérer des données. Dans ce cas, il s’agit de la table users.
+- `(name, email)` : Ces sont les colonnes de la table users dans lesquelles vous voulez insérer des données. Ici, vous insérez des données dans les colonnes name et email.
+- `VALUES ('John Doe', 'johndoe@gmail.com'), ('Sam Doe', 'samdoe@gmail.com'), ('Will Doe', 'willdoe@gmail.com')` :  
+Cette partie de la requête spécifie les données que vous voulez insérer. Chaque ensemble de parenthèses représente une nouvelle ligne à insérer dans la table. Ici, vous insérez trois nouvelles lignes dans la table. Chaque ligne contient un name et un email.
+
+### 5. Supprimer l'utilisateur avec l'`id` 1
+
+Cette requête sélectionne toutes les données de toutes les colonnes de la table users. Le symbole `*` signifie “toutes les colonnes” :
+```
+SELECT * FROM users;
+```
+Et vous verrez :
+```
++----+----------+------+-------------------+
+| id | name     | age  | email             |
++----+----------+------+-------------------+
+|  1 | John Doe | NULL | johndoe@gmail.com |
+|  2 | Sam Doe  | NULL | samdoe@gmail.com  |
+|  3 | Will Doe | NULL | willdoe@gmail.com |
++----+----------+------+-------------------+
+```
+
+Cette requête supprime la ligne de la table users où la colonne `id` est égale à 1 :
+```
+DELETE FROM users WHERE id = 1;
+```
+
+### 6. Supprimer la table `users`
+
+Une fois que vous exécutez cette commande, toutes les données stockées dans la table users seront définitivement supprimées.
+```
+DROP TABLE users;
+```
+
+### 7. Créer une table `users` avec `id`, `name` et `email`
+
+```
+CREATE TABLE users (
+id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(100),
+email VARCHAR(255) NOT NULL UNIQUE
+);
+```
+```
++-------+--------------+------+-----+---------+----------------+
+| Field | Type         | Null | Key | Default | Extra          |
++-------+--------------+------+-----+---------+----------------+
+| id    | int          | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(100) | YES  |     | NULL    |                |
+| email | varchar(255) | NO   | UNI | NULL    |                |
++-------+--------------+------+-----+---------+----------------+
+```
+
+### 8. Ajouter une nouvelle colonne `status` à la table `users`
+
+Cette requête ajoute une nouvelle colonne status à la table users. Cette colonne est de type BOOLEAN et ne peut pas être NULL.
+```
+ALTER TABLE users ADD status BOOLEAN NOT NULL;
+```
+```
++--------+--------------+------+-----+---------+----------------+
+| Field  | Type         | Null | Key | Default | Extra          |
++--------+--------------+------+-----+---------+----------------+
+| id     | int          | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(100) | YES  |     | NULL    |                |
+| email  | varchar(255) | NO   | UNI | NULL    |                |
+| status | tinyint(1)   | NO   |     | NULL    |                |
++--------+--------------+------+-----+---------+----------------+
+```
+
+Cette requête insère une nouvelle ligne dans la table users avec la valeur 1 pour la colonne status.
+```
+INSERT INTO users (status) VALUES (1);
+```
+Cette requête sélectionne toutes les données de la table users où la colonne status est égale à 1.
+```
+SELECT * FROM users WHERE status = 1;
+```
+```
++----+------+-------+--------+
+| id | name | email | status |
++----+------+-------+--------+
+|  1 | NULL |       |      1 |
++----+------+-------+--------+
+```
+
+## Les opérations fondamentales en SQL :
+
+### Sélection de données (SELECT)
+
+C'est l'opération la plus courante. Elle permet de récupérer des données spécifiques depuis une table.
+
+`SELECT` : Sélectionne des données d’une ou plusieurs tables.  
+`FROM` :  Spécifie la table à partir de laquelle vous souhaitez récupérer les données.  
+
+1. Sélectionner une colonne spécifique :
+```
+SELECT nom_du_champ FROM nom_du_tableau;
+```
+Cette requête SQL sélectionne le champ nom_du_champ de la table nom_du_tableau.  
+
+2. Sélectionner plusieurs colonnes :
+```
+SELECT prenom, nom FROM client;
+```
+Cette requête retourne les prénoms et les noms des clients.  
+
+3. Sélectionner toutes les colonnes :
+```
+SELECT * FROM client;
+```
+Cette requête retourne toutes les colonnes de la table client. 
+
+### Insertion de données (INSERT)
+
+Permets d'ajouter de nouvelles lignes de données à une table.
+
+`INSERT INTO` : insérer de nouvelles données dans une table.  
+`VALUES` : fourni les données que vous souhaitez insérer dans une table.
+
+1. Insérer une ligne en spécifiant toutes les colonnes :
+```
+INSERT INTO table VALUES ('valeur 1', 'valeur 2', ...);
+```
+Cette syntaxe oblige à remplir toutes les données, tout en respectant l’ordre des colonnes.
+
+2. Insérer une ligne en spécifiant seulement les colonnes souhaitées :
+```
+INSERT INTO table (nom_colonne_1, nom_colonne_2, ...) VALUES ('valeur 1', 'valeur 2', ...);
+```
+Il est possible de ne pas renseigner toutes les colonnes. De plus, l’ordre des colonnes n’est pas important.
+
+3. Insérer plusieurs lignes à la fois :
+```
+INSERT INTO client (prenom, nom, ville, age)  
+VALUES  
+('John', 'Doe', 'San Francisco', 28),  
+('Will', 'Doe', 'New York', 38);  
+```
+
+### Mise à jour de données (UPDATE) :
+
+Modifie les valeurs existantes dans une table.
+```
+UPDATE users SET age = 26 WHERE name = 'Doe';
+```
+
+### Suppression de données (DELETE) :
+
+Supprime des lignes de données d'une table.
+```
+DELETE FROM users WHERE nom = 'Doe';
+```
+
+### Les clauses
+
+#### WHERE
+
+La clause WHERE est utilisée pour filtrer les résultats des requêtes. Elle permet de spécifier des conditions pour restreindre les données renvoyées.
+
+```
+SELECT * FROM produits WHERE prix > 50;
+```
+Cette requête renverra tous les produits dont le prix est supérieur à 50.
+
+#### ORDER BY
+
+Utilisée pour trier les résultats d'une requête.
+```
+SELECT * FROM users ORDER BY name ASC;
+```
+Cette requête trie les utilisateurs par ordre croissant de nom.
+
+#### LIMIT
+
+Limite le nombre de résultats renvoyés par une requête.
+```
+SELECT * FROM users LIMIT 10;
+```
+Cette requête renverra les 10 premières lignes de la table `users`.
+
+#### AS
+
+Renommer temporairement une colonne ou une table dans le résultat d'une requête. Cela rend les résultats plus lisibles.
+```
+SELECT name AS NomUtilisateur FROM users;
+```
+Cette requête renomme la colonne `name` en `NomUtilisateur`.
+
+#### GROUP BY
+
+Regrouper les résultats d'une requête en fonction des valeurs d'une ou de plusieurs colonnes.
+````
+SELECT ville, COUNT(*) as NombreUtilisateurs FROM utilisateurs GROUP BY ville;
+````
+Cette requête renverra le nombre d'utilisateurs pour chaque ville.
+
+### Les opérateurs
+
+#### NOT
+
+L'opérateur NOT est utilisé pour nier une condition dans une clause WHERE
+```
+SELECT * FROM produits WHERE NOT prix > 50;
+```
+Cette requête renverra tous les produits dont le prix n'est pas supérieur à 50.
+
+#### AND
+
+L'opérateur AND est utilisé pour combiner plusieurs conditions dans une clause WHERE.
+```
+SELECT * FROM users WHERE age > 30 AND ville = 'Marseille';
+```
+Cette requête renverra tous les utilisateurs dont l'âge est supérieur à 30 et qui habitent à Marseille.
+
+### Les commandes
+
+#### ALTER TABLE
+
+La commande `ALTER TABLE` en SQL est utilisée pour modifier la structure d’une table existante (altérer).
+
+Utilisations courantes de cette commande :
+
+1. Ajouter une colonne :
+```
+ALTER TABLE nom_table ADD nom_colonne type_donnees;
+```
+2. Supprimer une colonne :
+```
+ALTER TABLE nom_table DROP COLUMN nom_colonne;
+```
+3. Modifier une colonne :
+```
+ALTER TABLE nom_table MODIFY nom_colonne type_donnees;
+```
+4. Renommer une colonne :
+```
+ALTER TABLE nom_table CHANGE colonne_ancien_nom colonne_nouveau_nom type_donnees;
+```
+
+## Les jointures
+
+Les jointures permettent de combiner les données de plusieurs tables en fonction de certaines conditions. Par exemple, si vous avez une table pour les utilisateurs et une autre pour les commandes, une jointure pourrait vous montrer les utilisateurs qui ont passé des commandes.
+
+```
+SELECT users.name, commandes.produit
+FROM users
+JOIN commandes ON users.id = commandes.user_id;
+```
+
+> [!NOTE]
+> L'utilisation du point `.` dans la clause `SELECT`, comme dans `users.name`, indique que la colonne `name` provient de la table `users`. En SQL, cela est utilisé pour spécifier de quelle table provient une colonne lorsque les colonnes partagent le même nom dans différentes tables. Le point sert à se déplacer dans l'objet.
+
+### PRIMARY KEY et FOREIGN KEY
+
+Les concepts de PRIMARY KEY et FOREIGN KEY sont cruciaux en SQL pour établir des relations entre les tables d'une base de données relationnelle.
+
+#### PRIMARY KEY (clé primaire)
+
+La clé primaire (PRIMARY KEY) assure l’unicité et l’intégrité des données dans une table.
+
+- Une table ne peut avoir qu’une seule clé primaire.
+- Elle ne peut pas contenir de valeurs NULL.
+- Elle identifie de manière unique chaque enregistrement dans une table.
+
+#### FOREIGN KEY (clé étrangère)
+
+La clé étrangère (FOREIGN KEY) maintient l’intégrité référentielle entre deux tables.
+
+- Une table peut avoir plusieurs clés étrangères.
+- Elle peut contenir des valeurs NULL.
+- C'est une clé utilisée pour lier deux tables ensemble.
+- Elle doit correspondre à une valeur existante de la PRIMARY KEY dans une autre table.
 
 
 
