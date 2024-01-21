@@ -1,6 +1,6 @@
 # SQL
 
-Le langage de requête structuré (SQL : Structured Query Language) est un langage de programmation normalisé permettant de stocker et de traiter des informations dans une base de données relationnelle. Vous pouvez utiliser des instructions SQL pour stocker, mettre à jour, supprimer, rechercher et récupérer des informations de la base de données. Vous pouvez également utiliser le langage SQL pour maintenir et optimiser les performances de la base de données.
+Le langage de requête structuré (SQL : Structured Query Language) est un langage de programmation normalisé utilisé pour communiquer avec et manipuler des bases de données. Vous pouvez utiliser des instructions SQL pour stocker, mettre à jour, supprimer, rechercher et récupérer des informations de la base de données. Vous pouvez également utiliser le langage SQL pour maintenir et optimiser les performances de la base de données.
 
 # Base de données
 
@@ -87,6 +87,18 @@ Les performances d’écriture et de lecture diffèrent en fonction de leur stru
   
 > [!IMPORTANT]
 > La vitesse de lecture et d’écriture dépend de nombreux facteurs, tels que la taille de la base de données, le nombre de requêtes simultanées, la complexité des requêtes, etc.
+
+## Concept de base
+
+1. **Tables** : Une base de données SQL est composée de tables. Chaque table est un peu comme un tableau Excel, avec des lignes et des colonnes. Chaque ligne représente une entrée distincte (par exemple, un employé dans une entreprise), et chaque colonne représente une caractéristique de cette entrée (par exemple, le nom, l’adresse, le salaire de l’employé).
+2. **Requêtes** : Les requêtes sont comme des questions que vous posez à la base de données. Par exemple, “Quel est le salaire moyen de tous les employés ?” ou “Combien d’employés vivent à Paris ?”. En SQL, ces questions sont formulées en utilisant des instructions spécifiques.
+3. **Instructions SQL de base** : Il existe plusieurs types d’instructions SQL, mais voici les plus courantes :
+- `SELECT` : utilisée pour sélectionner des données d’une base de données.
+- `INSERT INTO` : utilisée pour insérer de nouvelles données dans une base de données.
+- `UPDATE` : utilisée pour modifier des données existantes dans une base de données.
+- `DELETE` : utilisée pour supprimer des données d’une base de données.
+
+Nous reviendrons plus en détails sur Les opérations fondamentales en SQL.
 
 ## Les types de données
 
@@ -493,6 +505,10 @@ Renommer temporairement une colonne ou une table dans le résultat d'une requêt
 SELECT name AS NomUtilisateur FROM users;
 ```
 Cette requête renomme la colonne `name` en `NomUtilisateur`.
+
+#### SET
+
+Dans un `UPDATE`, `SET` est utilisée pour définir les colonnes et les valeurs qui doivent être mises à jour dans une table.
 
 #### GROUP BY
 
