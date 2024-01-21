@@ -100,10 +100,10 @@ Les performances d’écriture et de lecture diffèrent en fonction de leur stru
 
 Nous reviendrons plus en détails sur [les opérations fondamentales en SQL](#les-opérations-fondamentales-en-sql).
 
-> [!TIP] Pour faire des commentaires dans une requête SQL
->   
-> Commentaires sur une ligne : Les doubles tirets `--` Ceci est un commentaire
-> Commentaires multi-lignes : Tout ce qui est compris entre `/*` et `*/` est considéré comme commentaire
+> [!TIP] 
+> Pour faire des commentaires dans une requête SQL :  
+> - Commentaires sur une ligne : Les doubles tirets `--` Ceci est un commentaire
+> - Commentaires multi-lignes : Tout ce qui est compris entre `/*` et `*/` est considéré comme commentaire
 
 
 ## Les types de données
@@ -131,7 +131,7 @@ Liste exhaustive des types de données les plus couramment utilisés :
 > Si vous utilisez l’encodage UTF-8, chaque caractère peut compter pour plus d’un octet.  
 > Par exemple, le caractère `é` peut compter pour deux octets.
 
-> [!TIP] Plus de types de données
+> [!TIP]
 > Si vous souhaitez plus de types de données, n'hésitez pas à consulter le site [developpement-informatique.com](https://developpement-informatique.com/article/282/types-de-donnees-sql).
 
 ## Prérequis environnement de travail MySQL
@@ -158,7 +158,8 @@ Pour vérifier que le service wampmysql64 est bien lancé :
 
 ### Activation de l'UTF-8 de manière globale sur le serveur MySQL
 
-> [!WARNING] Correctif pour la limitation du nombre de caractères au niveau de VARCHAR() sous Windows 11
+> [!WARNING]
+> **Correctif** pour la limitation du nombre de caractères au niveau de VARCHAR() sous Windows 11.  
 > Nécessite la version MySQL 8.2.0.  
 > Modifier votre fichier à l'aide de l'application Bloc-notes `my.ini` en ajoutant à la suite de `port=3306` (en fin de fichier), les lignes `character_set_server=utf8` et `collation_server=utf8_general_ci`.  
 > Par défaut le chemin d'accès est : `C:\wamp64\bin\mysql\mysql8.2.0\my.ini`.
@@ -224,9 +225,11 @@ mysql>
 ```
 **Nous sommes prêts à taper du code SQL.**
 
-> [!NOTE] Par défaut, il n'y a pas de mot de passe pour se connecter au serveur MySQL de WampServer.
+> [!NOTE]
+> Par défaut, il n'y a pas de mot de passe pour se connecter au serveur MySQL de WampServer.
 
-> [!TIP] Effacer l'écran dans l'invite de commande de MySQL
+> [!TIP]
+> Effacer l'écran dans l'invite de commande de MySQL
 > ```
 > system cls;
 > ```
@@ -561,7 +564,7 @@ Cette requête renverra tous les utilisateurs dont l'âge est supérieur à 30 e
 #### DROP
 La commande DROP en SQL est utilisée pour supprimer des objets de la base de données, tels que des tables, des bases de données, des vues, des index, etc.
 
-> [!CAUTION] Attention
+> [!CAUTION]
 > La commande `DROP` est irréversible et peut entraîner la perte de données importantes. Elle efface définitivement les objets de la base de données.    Assurez-vous d'être certain de vouloir supprimer un objet avant de l'utiliser. Par précaution, il est recommandé de sauvegarder vos données pour éviter toute perte accidentelle.
 
 Utilisations courantes de cette commande :
@@ -722,10 +725,10 @@ INNER JOIN Quantities ON Prices.Product = Quantities.Product;
 | Computer Case |   99.00 |       19 |
 +---------------+---------+----------+
 ```
-> [!NOTE] Utilisation du point
+> [!NOTE]
 > L'utilisation du point `.` dans la clause `SELECT`, comme dans `Quantities.Quantity`, indique que la colonne `Quantity` provient de la table `Quantities`. En SQL, cela est utilisé pour spécifier de quelle table provient une colonne lorsque les colonnes partagent le même nom dans différentes tables. Le point sert à se déplacer dans l'objet.
 
-> [!CAUTION] Attention
+> [!CAUTION]
 > Si un produit est supprimé, alors on ne verra ni son prix, ni la quantité dans la liste puisque `INNER JOIN` retourne uniquement les résultats ou la condition est vraie dans les 2 tables.
 
 #### LEFT JOIN
@@ -836,7 +839,8 @@ Retourne toutes les lignes lorsque qu'il y a une correspondance dans l'une des t
 > MySQL ne prend pas en charge la syntaxe `FULL JOIN`.
 > 
 
-> [!TIP] Solution alternative
+> [!TIP]
+> **Solution alternative** :  
 > L'opérateur `UNION` supprime automatiquement les doublons dans le résultat. Cette requête combine les résultats des `LEFT JOIN` et `RIGHT JOIN`, offrant un résultat similaire à qu'on obtiendrait avec un `FULL JOIN` dans d'autres bases de données. Les colonnes `Product`, `Price` et `Quantity` sont sélectionnées dans chaque partie de l'union pour garantir que tous les résultats sont inclus.
 
 ```sql
