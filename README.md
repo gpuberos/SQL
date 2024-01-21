@@ -737,7 +737,7 @@ Retourne toutes les lignes de la table de gauche et les lignes correspondantes d
 
 Dans notre exemple de base de données, il y a deux produits - Powersupply et Computer Case - sur la "gauche" (table Price) qui n'ont pas d'entrée correspondante sur la "droite" (table Quantities). Dans une jointure gauche, ces lignes sont incluses dans l'ensemble de résultats avec un NULL dans la colonne Quantité. Les autres lignes du résultat sont identiques à celles de la jointure interne.
 
-![Left Join](/assets/img/join/Left-join.svg)
+![Left Join](/assets/img/join/left-join.svg)
 
 ```
 +------------------------------+--------------------------+
