@@ -538,6 +538,31 @@ Cette requête renverra tous les utilisateurs dont l'âge est supérieur à 30 e
 
 ### Les commandes
 
+#### DROP
+La commande DROP en SQL est utilisée pour supprimer des objets de la base de données, tels que des tables, des bases de données, des vues, des index, etc.
+
+> [!CAUTION]
+> La commande `DROP` est irréversible et peut entraîner la perte de données importantes. Elle efface définitivement les objets de la base de données.    Assurez-vous d'être certain de vouloir supprimer un objet avant de l'utiliser. Par précaution, il est recommandé de sauvegarder vos données pour éviter toute perte accidentelle.
+
+Utilisations courantes de cette commande :
+1. Suppression d'une base de données :
+```
+DROP DATABASE nom_de_la_base_de_donnees;
+```
+Cela supprime complètement la base de données, y compris toutes les tables, vues, procédures stockées, etc. associées.
+
+2. Suppression d'une table :
+```
+DROP TABLE nom_de_la_table;
+```
+Cette commande supprime la table spécifiée de la base de données, y compris toutes les données et la structure de la table.
+
+3. Suppression d'une vue :
+```
+DROP VIEW nom_de_la_vue;
+```
+Cela supprime la vue spécifiée de la base de données.
+
 #### ALTER TABLE
 
 La commande `ALTER TABLE` en SQL est utilisée pour modifier la structure d’une table existante (altérer).
