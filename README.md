@@ -841,7 +841,7 @@ Retourne toutes les lignes lorsque qu'il y a une correspondance dans l'une des t
 
 > [!TIP]
 > **Solution alternative** :  
-> L'opérateur `UNION` supprime automatiquement les doublons dans le résultat. Cette requête combine les résultats des `LEFT JOIN` et `RIGHT JOIN`, offrant un résultat similaire à qu'on obtiendrait avec un `FULL JOIN` dans d'autres bases de données. Les colonnes `Product`, `Price` et `Quantity` sont sélectionnées dans chaque partie de l'union pour garantir que tous les résultats sont inclus.
+> L'opérateur `UNION` supprime automatiquement les doublons dans le résultat. Cette requête combine les résultats des `LEFT JOIN` et `RIGHT JOIN`, offrant un résultat similaire à ce qu'on obtiendrait avec un `FULL JOIN` dans d'autres bases de données. Les colonnes `Product`, `Price` et `Quantity` sont sélectionnées dans chaque partie de l'union pour garantir que tous les résultats sont inclus.
 
 ```sql
 -- LEFT JOIN
