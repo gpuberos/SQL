@@ -877,7 +877,7 @@ RIGHT JOIN Quantities ON Prices.Product = Quantities.Product
 
 #### Database ecommerce pour test des jointures
 
-```
+```sql
 -- Création de la base de données
 CREATE DATABASE IF NOT EXISTS ecommerce;
 
