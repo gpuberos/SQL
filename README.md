@@ -116,13 +116,15 @@ Liste exhaustive des types de données les plus couramment utilisés :
 *Exemple : CHAR(10) peut stocker une chaîne de caractères de 10 caractères, et si la chaîne est plus courte, elle est remplie d'espaces.*
 5. `INT` : Utilisé pour stocker des nombres entiers.  
 *Exemple : INT peut stocker des nombres entiers tels que 1, 100, -500.*
-6. `DECIMAL(size, d)` : Utilisé pour stocker des nombres décimaux avec une précision spécifique.  
+6. `BIGINT` : Utilisé pour stocker de très grands nombres entiers.
+*Exemple : BIGINT peut stocker de très grands nombres entiers, va de -9 223 372 036 854 775 808 à 9 223 372 036 854 775 807.
+7. `DECIMAL(size, d)` : Utilisé pour stocker des nombres décimaux avec une précision spécifique.  
 *Exemple : DECIMAL(5, 2) peut stocker un nombre comme 123.45 avec une précision de deux décimales.*
-7. `FLOAT` : Utilisé pour stocker des nombres décimaux (à virgule flottante).  
+8. `FLOAT` : Utilisé pour stocker des nombres décimaux (à virgule flottante).  
 *Exemple : FLOAT peut stocker des nombres décimaux comme 3.14, -0.005.*
-8. `BOOLEAN` : Utilisé pour stocker des valeurs de vérité (TRUE/FALSE ou 1/0).  
+9. `BOOLEAN` : Utilisé pour stocker des valeurs de vérité (TRUE/FALSE ou 1/0).  
 *Exemple : BOOLEAN peut être utilisé pour indiquer si un utilisateur est connecté (TRUE) ou déconnecté (FALSE).*
-9. `DATE` : Utilisé pour stocker des dates.  
+10. `DATE` : Utilisé pour stocker des dates.  
 *Exemple : DATE peut stocker une date telle que '2024-01-20', 'AAAA-MM-JJ'.*
 
 > [!IMPORTANT]
